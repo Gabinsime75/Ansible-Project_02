@@ -1,0 +1,28 @@
+---
+- hosts: alertmanager
+  become: yes   # become: This directive is used to escalate privileges. When set to yes, it tells Ansible to run all tasks in the play as the user specified in become_user.
+  become_user: root   # become_user: This specifies the user account that Ansible should switch to for executing the tasks. In this case, it is root, which is the superuser on Unix/Linux systems.
+  become_method: sudo  # become_method: This defines the method Ansible will use to switch users. sudo is a common method that allows a permitted user to execute a command as the superuser or another user, as specified by the security policy.
+  roles:
+    - alertmanager
+
+- hosts: node_exporter
+  become: yes
+  become_user: root
+  become_method: sudo
+  roles:
+    - prometheus_node_exporter
+
+- hosts: prometheus
+  become: yes
+  become_user: root
+  become_method: sudo
+  roles:
+    - prometheus
+
+- hosts: grafana
+  become: yes
+  become_user: root
+  become_method: sudo
+  roles:
+    - grafana

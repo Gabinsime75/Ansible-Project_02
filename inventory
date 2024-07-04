@@ -1,0 +1,11 @@
+[prometheus]
+52.202.20.99
+
+[node_exporter]
+52.202.20.99
+
+[alertmanager]
+52.202.20.99
+
+[grafana]
+52.202.20.99
